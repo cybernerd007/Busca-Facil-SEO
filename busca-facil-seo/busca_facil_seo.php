@@ -23,13 +23,13 @@ function busca_facil_seo() {
         }
 		
         // Escapa e exibe as meta tags no cabeçalho
-		echo '<meta charset="UTF-8">';
-		echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+	echo '<meta charset="UTF-8">';
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
         echo '<meta name="title" content="' . esc_html($title) . '">' . "\n";
         echo '<meta name="description" content="' . esc_attr($meta_description) . '" />' . "\n";
 		
-		//Permitir que uma página seja indexada pelos motores de busca
-		echo '<meta name="robots" content="index, follow">';
+	//Permitir que uma página seja indexada pelos motores de busca
+	echo '<meta name="robots" content="index, follow">';
         
         // Meta keywords
         $meta_keywords = get_post_meta($post->ID, '_seo_keywords', true);
