@@ -42,6 +42,20 @@ function busca_facil_seo() {
         echo '<meta property="og:description" content="' . esc_attr($meta_description) . '" />' . "\n";
         echo '<meta property="og:type" content="article" />' . "\n";
         echo '<meta property="og:url" content="' . get_permalink($post->ID) . '" />' . "\n";
+
+	// Adiciona imagem do post no Open Graph (se disponível)
+        if (has_post_thumbnail($post->ID)) {
+            $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
+            echo '<meta property="og:image" content="' . esc_url($thumbnail[0]) . '">' . "\n";
+        }
+
+	// Adiciona Twitter Cards (opcional)
+        echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+        echo '<meta name="twitter:title" content="' . esc_attr($title) . '">' . "\n";
+        echo '<meta name="twitter:description" content="' . esc_attr($meta_description) . '">' . "\n";
+        if (has_post_thumbnail($post->ID)) {
+            echo '<meta name="twitter:image" content="' . esc_url($thumbnail[0]) . '">' . "\n";
+        }
     }
 }
 
